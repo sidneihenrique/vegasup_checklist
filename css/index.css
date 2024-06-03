@@ -1,0 +1,134 @@
+:root {
+    --background: linear-gradient(90deg, #151515 0%, #0B0B0B 100%);
+    --white: #FFFFFF;
+    --black: #000000;
+    --gray: #252525;
+
+    --blue: #0065FC;
+    --red: #F40102;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    box-sizing: border-box;
+    
+}
+
+body{
+    width: 100%;
+    background: var(--background);
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 48px 25%;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header button{
+    background: none;
+    border: 0;
+
+    font-size: 32px;
+
+    cursor: pointer;
+}
+
+/* Chart donut */
+
+.chart {
+    display: grid;
+    place-content: center;
+
+    position: relative;
+}
+
+.chart .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.chart .content h3{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+svg {
+    --percentage: 0;
+    width: 64px;
+    height: 64px;
+    transform: rotate(-90deg);
+}
+
+svg circle {
+    stroke-dasharray: 618;
+    stroke-dashoffset: 618;
+    stroke-width: 35;
+    fill: none;
+}
+
+svg circle:nth-child(1) {
+    stroke-dashoffset: 0;
+}
+
+svg circle:nth-child(2) {
+    stroke-dashoffset: calc(618 - (618 * var(--percentage))/100);
+    stroke-linecap: butt;
+
+    animation: progress 1s ease-in-out;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 618;
+        stroke-dashoffset: 618;
+    }
+}
+
+/* Estilizando tag details */
+
+details summary {
+    list-style: none; /* Remove o marcador padrão */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    position: relative; /* Necessário para posicionar o ícone */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+details summary::after {
+    content: '';
+    display: inline-block;
+    width: 16px; /* Largura do ícone */
+    height: 16px; /* Altura do ícone */
+    background-image: url('../assets/caret.png'); /* Caminho para sua imagem */
+    background-size: contain; /* Ajusta o tamanho da imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+    transition: transform 0.3s ease; /* Suaviza a rotação */
+}
+
+details[open] summary::after {
+    transform: rotate(90deg); /* Gira o ícone quando o details está aberto */
+}
+
+.teste[open] summary::after{
+    transform: rotate(90deg); /* Gira o ícone quando o details está aberto */
+
+}

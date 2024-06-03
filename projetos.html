@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/projetos.css">
+
+</head>
+<body>
+    <header>
+        <button onclick="history.back()">
+            <ion-icon name="chevron-back"></ion-icon>
+        </button>
+        <img src="./assets/logo_vegason.png" alt="logo">
+        <button onclick="location.href='./login.html'">
+            <ion-icon name="log-out-sharp"></ion-icon>
+        </button>
+    </header>
+
+    <p>Bem vindo, <span>Sidnei</span></p>
+
+    <div class="projetos">
+        <h5>Projetos</h5>
+
+        <div class="projeto">
+            <div class="left">
+
+                <div class="chart">
+                    <svg viewBox="0 0 232 232" style="--percentage: 50">
+                        <circle
+                            cx ="50%"
+                            cy ="50%"
+                            r="98.5"
+                            opacity="0.1"
+                            stroke="#D9D9D9"
+                        />
+    
+                        <circle
+                            cx ="50%"
+                            cy ="50%"
+                            r="98.5"
+                            stroke="url(#paint0_linear_201_85)"
+                        />
+    
+                        <defs>
+                            <linearGradient id="paint0_linear_201_85" x1="-9" y1="82" x2="145" y2="178" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#F40102"/>
+                                <stop offset="1" stop-color="#F40102"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                        
+                    <div class="content">
+                        <h3>50%</h3>
+                    </div>
+                </div>
+                <div class="projeto_informacoes">
+                    <h5>Projeto 1</h5>
+                    <p>Data contrato: <i>04/06/2024</i></p>
+                </div>
+
+            </div>
+            <button onclick="location.href='./testes.html?id='">
+                <ion-icon name="eye"></ion-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Ionic icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

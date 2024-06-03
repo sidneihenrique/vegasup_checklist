@@ -1,0 +1,58 @@
+body > p{
+    font-weight: 300;
+
+}
+
+body > p span{
+    font-weight: 500;
+}
+
+.projetos{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
+
+.projetos h5{
+    font-size: 16px;
+}
+
+.projeto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--gray);
+
+    padding: 12px 24px 12px 12px;
+
+    border-radius: 6px;
+}
+
+.projeto .left{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.projeto .left .projeto_informacoes *{
+    font-size: 14px;
+}
+
+.projeto button{
+    background: var(--blue);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+
+    padding: 4px;
+
+    border: 0;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
