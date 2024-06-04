@@ -67,7 +67,7 @@ while($row_colecao = mysqli_fetch_assoc($result_colecoes_executados)){
                 <summary>
                     <div class="left">
                         <label for="check_<?=$row_teste['id'];?>" class="checkbox">
-                            <input type="checkbox" id="check_<?=$row_teste['id'];?>" style="display: none;" data-id-teste="<?=$row_teste['id']?>" <?php if($row_teste['programado'] == 1) echo 'checked'; ?>>
+                            <input type="checkbox" id="check_<?=$row_teste['id'];?>" style="display: none;" data-id-teste="<?=$row_teste['id']?>" <?php if($row_teste['executado'] == 1) echo 'checked'; ?>>
                         </label>
                         <h2><?=$row_teste['titulo'];?></h2>
                     </div>
