@@ -266,3 +266,10 @@ button#add{
   .teste_cadastro.show{
     display: flex;
   }
+
+  #programados,
+  #executados{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }

@@ -151,6 +151,10 @@ svg circle:nth-child(2) {
 
 /* Estilizando tag details */
 
+details{
+    margin-top: 12px;
+}
+
 details summary {
     list-style: none; /* Remove o marcador padrão */
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
@@ -173,7 +177,7 @@ details summary::after {
     transition: transform 0.3s ease; /* Suaviza a rotação */
 }
 
-details[open] summary::after {
+details[open] > summary::after {
     transform: rotate(90deg); /* Gira o ícone quando o details está aberto */
 }
 

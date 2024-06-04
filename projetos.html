@@ -31,7 +31,7 @@
     <div class="projetos">
         <h5>Projetos</h5>
 
-        <div class="projeto">
+        <!-- <div class="projeto">
             <div class="left">
 
                 <div class="chart">
@@ -72,11 +72,29 @@
             <button onclick="location.href='./testes.html?id='">
                 <ion-icon name="eye"></ion-icon>
             </button>
-        </div>
+        </div> -->
     </div>
 
     <!-- Ionic icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        // Faz a requisição AJAX para o servidor
+        $.ajax({
+            url: 'http://localhost/vegasup_checklist/projetos.php',
+            type: 'GET',
+            success: function(response){
+                // Insere os projetos após a tag h5
+                $('.projetos').append(response);
+            },
+            error: function(xhr, status, error){
+                console.error(error);
+            }
+        });
+    });
+    </script>
 </body>
 </html>

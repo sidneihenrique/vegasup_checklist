@@ -15,12 +15,51 @@
     <link rel="stylesheet" href="./css/projetos.css">
     <link rel="stylesheet" href="./css/testes.css">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            carregarTestes();
+        });
+    
+        function carregarTestes() {
+            // Pega o ID dos parâmetros da URL
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            // Faz a requisição AJAX para o servidor com o ID
+            $.ajax({
+                url: 'http://localhost/vegasup_checklist/options.php',
+                type: 'GET',
+                data: { id: id },
+                success: function(response) {
+                    $('#colecao_testes').append(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+    
+            // Faz a requisição AJAX para o servidor com o ID
+            $.ajax({
+                url: 'http://localhost/vegasup_checklist/testes.php',
+                type: 'GET',
+                data: { id: id },
+                success: function(response) {
+                    $('.tab_buttons').after(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+
 </head>
 <body>
     <div class="modal">
-        <div class="card_modal">
+        <form class="card_modal" onsubmit="cadastrarColecao(event)" method="POST">
             <div class="top">
-                <button onclick="modal_add()"><ion-icon name="close-sharp"></ion-icon></button>
+                <button type="button" onclick="modal_add()"><ion-icon name="close-sharp"></ion-icon></button>
             </div>
 
             <div class="tipo_cadastro">
@@ -38,7 +77,7 @@
                     <input type="text" id="titulo_colecao">
                 </div>
     
-                <button class="cadastrar" onclick="cadastrar()">Cadastrar</button>
+                <button type="submit" class="cadastrar">Cadastrar</button>
     
             </div>
 
@@ -56,16 +95,15 @@
                 <div class="input-wrapper">
                     <label for="colecao_testes">Coleção de testes</label>
                     <select name="colecao_teste" id="colecao_testes">
-                        <option value="">Testes de Login</option>
-                        <option value="">Testes de Cadastro</option>
+
                     </select>
                 </div>
     
-                <button class="cadastrar" onclick="cadastrar()">Cadastrar</button>
+                <button type="submit" class="cadastrar">Cadastrar</button>
     
             </div>
 
-        </div>
+        </form>
         <div class="bg_blur" onclick="modal_add()"></div>
     </div>
 
@@ -116,7 +154,7 @@
         <button onclick="tabNavigation(this, 'executados')">Executados</button>
     </div>
 
-    <div id="programados" class="tab_content">
+    <!-- <div id="programados" class="tab_content">
         <details class="colecao">
             <summary>Realizar testes de Cadastro</summary>
             <details class="teste">
@@ -154,7 +192,7 @@
                 </p>
             </details>
         </details>
-    </div>
+    </div> -->
       
 
     <!-- Ionic icons -->
@@ -183,18 +221,77 @@
             document.querySelector('.modal').classList.toggle('show');
         }
 
+        function cadastrarColecao(event){
+            event.preventDefault(); // Prevent form submission
+            var tituloColecao = $('#titulo_colecao').val();
+
+            $.ajax({
+                url: 'http://localhost/vegasup_checklist/cadastrarColecao.php',
+                type: 'POST',
+                data: {
+                    titulo: tituloColecao
+                },
+                success: function(response) {
+                    if(response == "inserido"){
+                        alert('Coleção cadastrada com sucesso!');
+                        window.location.reload()
+                    }
+                    else{
+                        alert('Erro: ' + response);
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        function cadastrarTeste(event){
+            event.preventDefault(); // Prevent form submission
+            var tituloTeste = $('#titulo_teste').val();
+            var descricaoTeste = $('#descricao_teste').val();
+            var colecaoTestes = $('#colecao_testes').val();
+
+            $.ajax({
+                url: 'http://localhost/vegasup_checklist/cadastrarTeste.php',
+                type: 'POST',
+                data: {
+                    titulo: tituloTeste,
+                    descricao: descricaoTeste,
+                    colecao: colecaoTestes
+                },
+                success: function(response) {
+                    if(response == "inserido"){
+                        alert('Teste cadastrada com sucesso!');
+                        window.location.reload()
+                    }
+                    else{
+                        alert('Erro: ' + response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
         function toggleTipo(){
             let colecao_cadastro = document.querySelector('.colecao_cadastro');
             let teste_cadastro = document.querySelector('.teste_cadastro');
             if(colecao_cadastro.classList.contains('show')){
                 colecao_cadastro.classList.remove('show');
                 teste_cadastro.classList.add('show');
+                document.querySelector('form').setAttribute("onsubmit", "cadastrarTeste(event)");
             }
             else{
                 teste_cadastro.classList.remove('show');
                 colecao_cadastro.classList.add('show');
+                document.querySelector('form').setAttribute("onsubmit", "cadastrarColecao(event)");
+
             }
         }
+
     </script>
 </body>
 </html>
