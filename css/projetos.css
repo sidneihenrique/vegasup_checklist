@@ -56,3 +56,40 @@ body > p span{
 
     cursor: pointer;
 }
+
+.checkbox{
+    width: 32px;
+    height: 32px;
+
+    border-radius: 4px;
+    border: 2px solid var(--red);
+    background: none;
+
+    position: relative;
+}
+
+.checkbox:has(input:checked){
+    background: var(--red);
+    z-index: 1;
+}
+
+.checkbox:has(input:checked)::after{
+    content: "";
+    background-image: url(../assets/checkmark.png);
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 24px;
+    height: 24px;
+
+
+    z-index: 2;
+}

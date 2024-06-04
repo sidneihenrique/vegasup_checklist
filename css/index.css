@@ -45,6 +45,55 @@ header button{
     cursor: pointer;
 }
 
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.input-wrapper label{
+    font-size: 14px;
+}
+
+.input-wrapper input,
+.input-wrapper textarea{
+    border: 1px solid var(--white);
+    background: none;
+
+    min-height: 40px;
+
+    padding: 4px 8px;
+
+    border-radius: 6px;
+
+    outline: 0;
+}
+
+.input-wrapper textarea{
+    height: 64px;
+}
+
+.input-wrapper select{
+    background: var(--white);
+    color: var(--black);
+
+    height: 40px;
+
+    font-weight: 600;
+
+    outline: 0;
+
+    border-radius: 6px;
+}
+
+.input-wrapper option{
+    color: var(--black);
+
+    font-weight: 600;
+
+    padding: 16px;
+}
+
 /* Chart donut */
 
 .chart {

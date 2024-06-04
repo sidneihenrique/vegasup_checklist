@@ -254,3 +254,15 @@ button#add{
   .slider.round:before {
     border-radius: 50%;
   }
+
+  .colecao_cadastro,
+  .teste_cadastro{
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .colecao_cadastro.show,
+  .teste_cadastro.show{
+    display: flex;
+  }
